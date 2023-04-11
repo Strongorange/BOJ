@@ -1,40 +1,40 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int n;
-long long a[100005];
-
-int mxcnt;
-int cnt;
+int N;
+long long arr[100001];
 
 int main()
 {
     ios::sync_with_stdio(0);
     cin.tie(0);
-    cin >> n;
-    for (int i = 0; i < n; i++)
+
+    cin >> N;
+    for (int i = 0; i < N; i++)
     {
-        cin >> a[i];
+        cin >> arr[i];
     }
-    sort(a, a + n);
+    sort(arr, arr + N);
+
     int cnt = 0;
-    long long mxval = -(pow(2, 62)) - 1;
+    long long mxval = -(1ll << 62) - 1;
     int mxcnt = 0;
-    for (int i = 0; i < n; i++)
+
+    for (int i = 0; i < N; i++)
     {
-        if (i == 0 || a[i - 1] == a[i])
+        if (i == 0 || arr[i - 1] == arr[i])
             cnt++;
         else
         {
             if (cnt > mxcnt)
             {
                 mxcnt = cnt;
-                mxval = a[i - 1];
+                mxval = arr[i - 1];
             }
             cnt = 1;
         }
     }
     if (cnt > mxcnt)
-        mxval = a[n - 1];
+        mxval = arr[N - 1];
     cout << mxval;
 }
